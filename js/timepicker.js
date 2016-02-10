@@ -27,9 +27,9 @@
 		*/
 
 		acf.add_action('ready append', function( $el ){
-			
-			$el.find('input.ps_timepicker').each(function(){
-				var input = $(this)
+
+			acf.get_fields({ type : 'date_time_picker'}, $el).each(function(){
+				var input = $(this).find( 'input.ps_timepicker' )
 					, is_timeonly = (input.attr('data-date_format') == undefined)
 					, date_format = (input.attr('data-date_format') != undefined) ? input.attr('data-date_format') : 'mm/dd/yy'
 					, time_format = input.attr('data-time_format')
@@ -44,7 +44,7 @@
 				input.addClass('active').attr("placeholder", (is_timeonly) ? time_format : date_format + ' ' + time_format).datetimepicker({
 					changeYear: true
 					, yearRange: "-100:+100"
-					, changeMonth: true				
+					, changeMonth: true
 					, timeOnly: is_timeonly
 					, timeFormat: time_format
 					, dateFormat: date_format
@@ -60,7 +60,7 @@
 					, firstDay: timepicker_objectL10n.firstDay
 				});
 
-				
+
 				if($('body > #ui-datepicker-div').length > 0)
 				{
 					$('#ui-datepicker-div').wrap('<div class="ui-acf" />');
@@ -68,7 +68,7 @@
 
 				// allow null
 				input.blur(function(){
-					
+
 					if( !input.val() )
 					{
 						input.val('');
@@ -76,7 +76,7 @@
 				});
 			});
 
-			
+
 
 		});
 
@@ -87,7 +87,7 @@
 		/*
 		*  acf/setup_fields (ACF4)
 		*
-		*  This event is triggered when ACF adds any new elements to the DOM. 
+		*  This event is triggered when ACF adds any new elements to the DOM.
 		*
 		*  @type	function
 		*  @since	1.0.0
@@ -117,7 +117,7 @@
 				input.addClass('active').attr("placeholder", (is_timeonly) ? time_format : date_format + ' ' + time_format).datetimepicker({
 					changeYear: true
 					, yearRange: "-100:+100"
-					, changeMonth: true				
+					, changeMonth: true
 					, timeOnly: is_timeonly
 					, timeFormat: time_format
 					, dateFormat: date_format
@@ -133,7 +133,7 @@
 					, firstDay: timepicker_objectL10n.firstDay
 				});
 
-				
+
 				if($('body > #ui-datepicker-div').length > 0)
 				{
 					$('#ui-datepicker-div').wrap('<div class="ui-acf" />');
@@ -141,7 +141,7 @@
 
 				// allow null
 				input.blur(function(){
-					
+
 					if( !input.val() )
 					{
 						input.val('');
